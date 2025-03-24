@@ -5,7 +5,7 @@ We are planning to use the databases with wich we are already familiar.
 ### Backend 
 We will use Python for it. If to be more detailed, Flask
 ### Frontend 
-HTML + CSS
+Bootstrap
 ### Database 
 SQLite
 ### AI model
