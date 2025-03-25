@@ -39,10 +39,23 @@
     addMessage(userInput, 'user-message');
     document.getElementById('userInput').value = '';
 
-    setTimeout(() => {
-        const aiResponse = "Here's a motivational response based on your abilities. Keep pushing forward!";
-        addMessage(aiResponse, 'ai-message'); 
-    }, 1000);
+    fetch('/get_response', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ message: userInput })
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Add AI-generated response to the chat
+                addMessage(data.response, 'ai-message');
+            })
+            .catch(error => {
+                // Handle errors if the API request fails
+                addMessage("An error occurred. Please try again later.", 'ai-message');
+            });
+        
 }
 
 function addMessage(text, type) {
