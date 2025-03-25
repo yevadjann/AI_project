@@ -1,0 +1,265 @@
+:root {
+    --primary-dark-blue: #03274b;
+    --secondary-blue: #22374d;
+    --accent-blue: #3b5998;
+    --background-neutral: #e6e5d8;
+    --text-light: #f4f4f4;
+    --text-dark: #333;
+    --shadow-subtle: rgba(0, 0, 0, 0.1);
+    --shadow-medium: rgba(0, 0, 0, 0.15);
+    --highlight-red: #ff3b3b; 
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: url('https://img.freepik.com/free-vector/note-paper-background-with-hole-punches_78370-2344.jpg');
+    font-family: 'Courier New', monospace;
+}
+
+.custom-navbar {
+    font-family: 'Arial', sans-serif;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(32, 50, 88, 0.95);
+    color: var(--text-light);
+    box-shadow: 0 4px 12px var(--shadow-subtle);
+    padding: 15px 20px; /* Відступи */
+    z-index: 1000; /* Пріоритетність шару */
+    transition: background-color 0.3s ease;
+}
+
+.custom-navbar:hover {
+    background: rgba(32, 50, 88, 0.98);
+}
+
+.navbar-top {
+    display: flex;  /* Вирівнювання в рядок */
+    justify-content: space-between;
+    align-items: center; /* Вирівнювання по центру */
+}
+
+.navbar-brand {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-light);
+    letter-spacing: 1px;
+}
+
+.nav-link {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    padding: 8px 15px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+/* Декоративне підкреслення */
+.nav-link::before {
+    content: ''; /* Порожній вміст для псевдоелемента */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--text-light);
+    transform: scaleX(0); /* Початковий стан без підкреслення */
+    transition: transform 0.3s ease;
+}
+
+/* Підкреслення при наведенні */
+.nav-link:hover::before {
+    transform: scaleX(1);
+}
+
+.nav-link:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+    min-height: 800px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Центрування */
+    background: rgba(230, 229, 216, 0.98);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px var(--shadow-medium);
+    z-index: 100; /* Поверх інших елементів */
+}
+
+.container::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    background: radial-gradient(
+        circle at 30% 30%, 
+        rgba(255, 255, 255, 0.4), 
+        var(--highlight-red) 50%, 
+        rgba(0, 0, 0, 0.3) 100%
+    );
+    border-radius: 70%;
+    box-shadow: 
+        0 0 5px rgba(255, 59, 59, 0.8),  /* мяке світло */
+        inset 0 0 10px rgba(0, 0, 0, 0.3), /* внутрішня тінь */
+        -2px -2px 6px rgba(255, 255, 255, 0.3), /* металичний вигляд*/
+        2px 2px 6px rgba(0, 0, 0, 0.2); /* 3д ефект*/
+    border: 2px solid rgba(255, 255, 255, 0.2); /* краї */
+    transform: perspective(100px) rotateX(10deg); /* блиск */
+    transition: all 0.3s ease;
+}
+
+.container::after:hover {
+    transform: scale(1.1) perspective(100px) rotateX(10deg);
+    box-shadow: 
+        0 0 10px rgba(255, 59, 59, 1),
+        inset 0 0 15px rgba(0, 0, 0, 0.4),
+        -3px -3px 8px rgba(255, 255, 255, 0.4),
+        3px 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+.container:hover {
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    transform: translate(-50%, -50%);
+}
+
+.container h1 {
+    font-weight: bold;
+    color: var(--primary-dark-blue);
+    border-bottom: 3px solid var(--primary-dark-blue);
+    padding-bottom: 10px; /* Відступ знизу для простору */
+    margin-bottom: 20px; /* Відступ знизу між заголовком і вмістом */
+}
+
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; /* Вертикальна прокрутка при переповненні */
+    background: rgba(250, 245, 173, 0.98);
+    border-radius: 15px;
+    padding: 20px;
+    gap: 15px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-blue) transparent;
+    height: 500px;
+}
+
+/* Стилізація скролбара для WebKit (Chrome, Safari) */
+.chat-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chat-container::-webkit-scrollbar-thumb {
+    background-color: var(--accent-blue);
+    border-radius: 4px;
+}
+
+.message-wrapper {
+    display: flex;
+    width: 100%;
+}
+
+.message-wrapper.ai {
+    justify-content: flex-start;
+}
+
+.message-wrapper.user {
+    justify-content: flex-end;
+}
+
+.message {
+    position: relative;
+    max-width: 90%;
+    padding: 15px 20px;
+    border-radius: 20px;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    word-wrap: break-word;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.message::before {
+    position: absolute;
+    bottom: -10px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+}
+
+.ai-message {
+    background: linear-gradient(135deg, #22374d, #03274b);
+    color: white;
+    border-bottom-left-radius: 5px;
+    align-self: flex-start;
+}
+
+.ai-message::before {
+    left: 15px;
+    border-width: 0 15px 15px 0;
+    border-color: transparent #03274b transparent transparent;
+}
+
+.user-message {
+    background: linear-gradient(135deg, #3b5998, #203258);
+    color: white;
+    border-bottom-right-radius: 5px;
+    align-self: flex-end;
+}
+
+.user-message::before {
+    right: 15px;
+    border-width: 0 0 15px 15px;
+    border-color: transparent transparent #203258 transparent;
+}
+
+.message:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Поле вводу */
+.form-control {
+    flex: 1;
+    border-radius: 25px 0 0 25px;
+    padding: 16px 20px;
+    border: 2px solid transparent;
+    font-size: 1rem;
+    background-color: white;
+    transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--accent-blue), var(--primary-dark-blue));
+    border: none;
+    border-radius: 0 25px 25px 0;
+    padding: 12px 30px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, var(--secondary-blue), var(--primary-dark-blue));
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px var(--shadow-subtle);
+}
