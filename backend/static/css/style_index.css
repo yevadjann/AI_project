@@ -61,27 +61,292 @@ body {
     position: relative;
 }
 
-/* Декоративне підкреслення */
-.nav-link::before {
-    content: ''; /* Порожній вміст для псевдоелемента */
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: var(--text-light);
-    transform: scaleX(0); /* Початковий стан без підкреслення */
+#contactModal .modal-content {
+    background-color: var(--background-neutral);
+    border-radius: 15px;
+    box-shadow: 0 6px 15px var(--shadow-medium);
+    font-family: 'Courier New', monospace;
+    backdrop-filter: blur(5px);
+}
+
+#contactModal .modal-header {
+    background-color: var(--secondary-blue);
+    color: var(--text-light);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    padding: 1rem 1.5rem;
+    border-bottom: none;
+}
+
+#contactModal .modal-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px var(--shadow-subtle);
+}
+
+#contactModal .modal-body p {
+    font-size: 1.1rem; 
+    line-height: 1.6; 
+    color: var(--text-dark); 
+    margin-bottom: 15px;  
+    text-align: left; 
+}
+
+
+#contactModal .modal-body a {
+    font-weight: 600; 
+    color: #ff8c00; 
+    text-decoration: none; 
+    transition: color 0.3s ease; 
+}
+
+#contactModal .modal-body a:hover {
+    color: #ff3b3b; 
+    text-decoration: underline; 
+}
+
+#contactModal .btn-secondary {
+    background: linear-gradient(135deg, #ff8c00, #ff3b3b);
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px var(--shadow-medium);
+}
+
+#contactModal .btn-secondary:hover {
+    background: linear-gradient(135deg, #ff3b3b, #ff8c00);
+    box-shadow: 0 6px 12px var(--shadow-medium);
+    transform: translateY(-2px);
+}
+
+/* Анімація появи модального вікна */
+#contactModal.modal.fade .modal-dialog {
+    transform: translateY(-50px);
+    transition: transform 0.3s ease-out;
+}
+
+#contactModal.modal.show .modal-dialog {
+    transform: translateY(0);
+}
+
+#contactModal .typewriter-text {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 2.5s steps(30, end);
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-light);
+    text-shadow: 1px 1px 2px var(--shadow-subtle);
+    max-width: 100%;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+#showMoreButton {
+    background: linear-gradient(135deg, #ff8c00, #ff3b3b); 
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    justify-content: center;
+    gap: 8px; 
+}
+
+#showMoreButton:hover {
+    background: linear-gradient(135deg, #ff3b3b, #ff8c00); 
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+    transform: translateY(-3px); 
+}
+
+#showMoreButton:focus {
+    outline: none; 
+    box-shadow: 0 0 8px rgba(255, 138, 0, 0.6); 
+}
+
+#showMoreButton i {
+    font-size: 1.2rem; 
     transition: transform 0.3s ease;
 }
 
-/* Підкреслення при наведенні */
-.nav-link:hover::before {
-    transform: scaleX(1);
+#showMoreButton.showing i {
+    transform: rotate(180deg); 
 }
 
-.nav-link:hover {
-    background: rgba(255, 255, 255, 0.2);
+#contactModal .extra-info p {
+    font-size: 1rem; 
+    line-height: 1.5;
+    margin-bottom: 10px; 
+    color: var(--text-dark);
 }
+
+#contactModal .modal-content {
+    background-color: var(--background-neutral);
+    border-radius: 15px;
+    box-shadow: 0 6px 15px var(--shadow-medium);
+    font-family: 'Courier New', monospace;
+    backdrop-filter: blur(5px);
+}
+
+#contactModal .modal-header {
+    background-color: var(--secondary-blue);
+    color: var(--text-light);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    padding: 1rem 1.5rem;
+    border-bottom: none;
+}
+
+#contactModal .modal-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px var(--shadow-subtle);
+}
+
+#contactModal .modal-body p {
+    font-size: 1.1rem; 
+    line-height: 1.6; 
+    color: var(--text-dark); 
+    margin-bottom: 15px;  
+    text-align: left; 
+}
+
+#contactModal .modal-body a {
+    font-weight: 600; 
+    color: #ff8c00; 
+    text-decoration: none; 
+    transition: color 0.3s ease; 
+}
+
+#contactModal .modal-body a:hover {
+    color: #ff3b3b;
+    text-decoration: underline; 
+}
+
+#contactModal .btn-secondary {
+    background: linear-gradient(135deg, #ff8c00, #ff3b3b);
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px var(--shadow-medium);
+}
+
+#contactModal .btn-secondary:hover {
+    background: linear-gradient(135deg, #ff3b3b, #ff8c00);
+    box-shadow: 0 6px 12px var(--shadow-medium);
+    transform: translateY(-2px);
+}
+
+#contactModal.modal.fade .modal-dialog {
+    transform: translateY(-50px);
+    transition: transform 0.3s ease-out;
+}
+
+#contactModal.modal.show .modal-dialog {
+    transform: translateY(0);
+}
+
+#contactModal .typewriter-text {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 2.5s steps(30, end);
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-light);
+    text-shadow: 1px 1px 2px var(--shadow-subtle);
+    max-width: 100%;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+#aboutUsModal .modal-content {
+    background-color: var(--background-neutral);
+    border-radius: 15px;
+    box-shadow: 0 6px 15px var(--shadow-medium);
+    font-family: 'Courier New', monospace;
+    backdrop-filter: blur(5px);
+}
+
+#aboutUsModal .modal-header {
+    background-color: var(--secondary-blue);
+    color: var(--text-light);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    padding: 1rem 1.5rem;
+    border-bottom: none;
+}
+
+#aboutUsModal .modal-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px var(--shadow-subtle);
+}
+
+#aboutUsModal .modal-body {
+    font-size: 1.1rem; 
+    line-height: 1.6; 
+    color: var(--text-dark);  
+    margin-bottom: 15px;  
+    text-align: left; 
+}
+
+#aboutUsModal .modal-footer {
+    display: flex;
+    justify-content: flex-end; 
+    padding: 1rem 1.5rem;
+}
+
+#aboutUsModal .btn-secondary {
+    background: linear-gradient(135deg, #ff8c00, #ff3b3b);
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px var(--shadow-medium);
+}
+
+#aboutUsModal .btn-secondary:hover {
+    background: linear-gradient(135deg, #ff3b3b, #ff8c00);
+    box-shadow: 0 6px 12px var(--shadow-medium);
+    transform: translateY(-2px);
+}
+
+#aboutUsModal .typewriter-text {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 2.5s steps(30, end);
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-light);
+    text-shadow: 1px 1px 2px var(--shadow-subtle);
+    max-width: 100%;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
 
 .container {
     width: 100%;

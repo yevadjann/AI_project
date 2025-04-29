@@ -1,0 +1,348 @@
+:root {
+    --primary-dark-blue: #03274b;
+    --secondary-blue: #22374d;
+    --accent-blue: #3b5998;
+    --background-neutral: #e6e5d8;
+    --text-light: #f4f4f4;
+    --text-dark: #333;
+    --shadow-subtle: rgba(0, 0, 0, 0.1);
+    --shadow-medium: rgba(0, 0, 0, 0.15);
+    --highlight-red: #ff3b3b; 
+    --bg-light: rgba(230, 229, 216, 0.6);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: url('https://img.freepik.com/free-vector/note-paper-background-with-hole-punches_78370-2344.jpg');
+    font-family: 'Courier New', monospace;
+}
+
+.custom-navbar {
+    font-family: 'Arial', sans-serif;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(32, 50, 88, 0.95);
+    color: var(--text-light);
+    box-shadow: 0 4px 12px var(--shadow-subtle);
+    padding: 15px 20px;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+.custom-navbar:hover {
+    background: rgba(32, 50, 88, 0.98);
+}
+
+.navbar-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-brand {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-light);
+    letter-spacing: 1px;
+    text-decoration: none;
+}
+
+.page-header {
+    background: rgba(32, 50, 88, 0.95);
+    backdrop-filter: blur(5px);
+    padding: 5rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px var(--shadow-subtle);
+    max-width: 80%;
+    margin: 7rem auto 0;
+    text-align: center;
+}
+
+.page-header h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--background-neutral);
+    text-shadow: 2px 2px 5px var(--shadow-subtle);
+    margin-bottom: 0.5rem;
+}
+
+.page-header p {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+}
+
+.custom-button {
+    background: linear-gradient(135deg, #ff8c00, #ff3b3b);
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px var(--shadow-medium);
+    text-transform: uppercase;
+}
+
+.custom-button:hover {
+    background: linear-gradient(135deg, #ff3b3b, #ff8c00);
+    box-shadow: 0 6px 15px var(--shadow-medium);
+    transform: translateY(-3px);
+}
+
+.custom-button:active {
+    transform: scale(0.98);
+}
+
+.how-it-works {
+    width: 100vw; 
+    margin: 3rem 0; 
+    padding: 2rem;
+    background: rgba(230, 229, 216, 0.6);
+    border-radius: 0; 
+    box-shadow: 0 4px 10px var(--shadow-subtle);
+    text-align: center;
+}
+
+
+.how-it-works h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: rgba(32, 50, 88, 0.95);
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 5px var(--shadow-subtle);
+}
+
+.how-it-works-row {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.how-it-works-column {
+    flex: 1;
+    min-width: 250px;
+    max-width: 500px;
+    background: var(--secondary-blue);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px var(--shadow-medium);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.how-it-works-column:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px var(--shadow-medium);
+}
+
+.how-it-works-column h4 {
+    font-size: 1.4rem;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+}
+
+.how-it-works-column p {
+    font-size: 1rem;
+    color: var(--text-light);
+}
+
+.carousel-item img {
+    width: 100%;
+    height: auto; 
+    border-radius: 10px;
+}
+
+#myCarousel {
+    max-width: 30%; 
+    margin: auto;
+}
+
+.carousel-caption {
+    background: linear-gradient(135deg, #ff8c00, #ff3b3b);
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    width: 60%; 
+    max-width: 80%;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%); 
+    text-align: center;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: var(--primary-dark-blue); 
+    border-radius: 50%;
+    padding: 10px;
+}
+
+.carousel-control-next:hover .carousel-control-next-icon{
+    background-color: #ff3b3b; 
+}
+.carousel-control-prev:hover .carousel-control-prev-icon {
+    background-color: #ff8c00; 
+}
+
+.footer {
+    background: rgba(32, 50, 88, 0.95) !important;
+    color: #fff;
+    padding: 20px;
+    font-size: 16px;
+    border-top: 3px solid #ff3b3b;
+}
+
+.footer p {
+    margin: 5px 0;
+}
+
+.footer i {
+    font-size: 20px;
+    margin: 0 10px;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer i:hover, 
+.footer a:hover i,
+.footer a:hover {
+    color: #ff3b3b;
+    cursor: pointer;
+}
+
+.footer a {
+    text-decoration: none;
+}
+
+.modal-content {
+    background-color: var(--background-neutral);
+    border-radius: 15px;
+    box-shadow: 0 6px 15px var(--shadow-medium);
+    font-family: 'Courier New', monospace;
+}
+
+.modal-header {
+    background-color: var(--secondary-blue);
+    color: var(--text-light);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    padding: 1rem 1.5rem;
+}
+
+.modal-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px var(--shadow-subtle);
+}
+
+.typewriter-text {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 2s steps(30, end);
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-light);
+    text-shadow: 1px 1px 2px var(--shadow-subtle);
+    max-width: 100%;
+}
+
+.email-info{
+    font-family:'Arial', sans-serif;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+.btn-close {
+    background-color: var(--highlight-red);
+    border-radius: 50%;
+    padding: 6px;
+}
+
+.btn-close:hover {
+    opacity: 0.8;
+}
+
+#emailForm .form-label {
+    font-weight: bold;
+    color: var(--primary-dark-blue);
+}
+
+#emailForm .form-control {
+    border-radius: 8px;
+    border: 1px solid var(--secondary-blue);
+    box-shadow: 0 2px 6px var(--shadow-subtle);
+}
+
+#emailForm .form-control:focus {
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 8px var(--shadow-medium);
+}
+
+#emailForm button[type="submit"] {
+    background: linear-gradient(135deg, #ff8c00, #ff3b3b);
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px var(--shadow-medium);
+}
+
+#emailForm button[type="submit"]:hover {
+    background: linear-gradient(135deg, #ff3b3b, #ff8c00);
+    box-shadow: 0 6px 12px var(--shadow-medium);
+    transform: translateY(-2px);
+}
+
+.email-status {
+    font-family: 'Arial', sans-serif;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: green;
+    text-align: center;
+    animation: fadeSlideIn 0.6s ease-in-out;
+    background-color: rgba(0, 128, 0, 0.1);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 15px;
+    box-shadow: 0 2px 8px var(--shadow-subtle);
+}
+
+@keyframes fadeSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-content {
+    backdrop-filter: blur(5px);
+}
+
+.modal.fade .modal-dialog {
+    transform: translateY(-50px);
+    transition: transform 0.3s ease-out;
+}
+
+.modal.show .modal-dialog {
+    transform: translateY(0);
+}
