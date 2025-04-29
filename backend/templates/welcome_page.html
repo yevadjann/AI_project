@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIspire</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_wp.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <nav class="navbar custom-navbar d-flex align-items-center"> 
+        <div class="navbar-top d-flex align-items-center">
+            <a href="#" class="navbar-brand me-3">AIspire 💡</a>
+        </div>
+    </nav>
+    
+    <div class="page-header">
+        <h1>📜 Your Dream University, One Letter Away 📜</h1>
+        <p>🚀 Let AI craft your perfect motivational letter effortlessly. 🚀</p>
+        <button class="custom-button">Start Now 🖋️</button>
+    </div>
+
+    <div class="how-it-works" id="how-it-works">
+        <h2 class="text-center">How our AI works?</h2>
+        <div class="how-it-works-row">
+            <div class="how-it-works-column">
+                <h4>1. Enter Your Details</h4>
+                <p>Tell us about your skills and goals.</p>
+            </div>
+            <div class="how-it-works-column">
+                <h4>2. AI Generates</h4>
+                <p>Our AI crafts a powerful personal statement.</p>
+            </div>
+            <div class="how-it-works-column">
+                <h4>3. Review & Edit</h4>
+                <p>Refine your statement before submission.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="myCarousel" class="carousel slide mt-5" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2"></button>
+        </div>
+        <div class="carousel-inner text-center">
+            <div class="carousel-item active">
+                <img src="{{ url_for('static', filename='images/person1.jpg') }}" class="d-block w-100" alt="Person 1">
+                <div class="carousel-caption d-none d-md-block">
+                    <h3>Success Story 1</h3>
+                    <p>AIspire helped me get into my dream university!</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{{ url_for('static', filename='images/person2.jpg') }}" class="d-block w-100" alt="Person 2">
+                <div class="carousel-caption d-none d-md-block">
+                    <h3>Success Story 2</h3>
+                    <p>So easy to use and highly effective.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{{ url_for('static', filename='images/person3.jpg') }}" class="d-block w-100" alt="Person 3">
+                <div class="carousel-caption d-none d-md-block">
+                    <h3>Success Story 3</h3>
+                    <p>I got multiple offers thanks to AIspire!</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+
+    <div class="footer mt-5 text-white text-center p-3" id="contact">
+        <p>PS. <span class="text-light">WITH LOVE, US</span></p>
+        <p>Contact us: 
+            <i class="bi bi-envelope" style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#emailModal"></i> 
+            <a href="https://www.instagram.com/ai_spire_/" target="blank" class="text-white">
+                <i class="bi bi-instagram"></i>
+            </a>                      
+        </p>
+    </div>
+    <div class="modal fade" id="emailModal" tabindex="-1" aria-labelledby="emailModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="emailModalLabel">
+                        <span class="typewriter-text">Send us a message ✉️</span>
+                    </h5>     
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="mb-3 email-info">Here is our email. So write us if something is disturbing you.</p>
+                    <form id="emailForm">
+                        <div class="mb-3">
+                            <label for="userEmail" class="form-label">Your Email:</label>
+                            <input type="email" class="form-control" id="userEmail" placeholder="your@email.com" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="messageText" class="form-label">Message:</label>
+                            <textarea class="form-control" id="messageText" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send</button>
+                        <div id="emailStatus" class="mt-2 text-success email-status" style="display: none;">
+                            ✅ Message sent successfully!
+                        </div>                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+  
+  <script>
+    document.getElementById("emailForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const sender = document.getElementById("userEmail").value;
+    const message = document.getElementById("messageText").value;
+
+    console.log("Sending Email:", {
+        from: sender,
+        message: message
+    });
+
+    document.getElementById("emailStatus").style.display = "block";
+    setTimeout(() => {
+        document.getElementById("emailStatus").style.display = "none";
+        var modal = bootstrap.Modal.getInstance(document.getElementById('emailModal'));
+        modal.hide();
+        document.getElementById("emailForm").reset();
+    }, 2000);
+});
+
+  </script> 
+</body>
+</html>

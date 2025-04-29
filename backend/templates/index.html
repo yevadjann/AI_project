@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIspire</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_index.css') }}">
+</head>
+<body>
+    <nav class="navbar custom-navbar d-flex align-items-center"> 
+        <div class="navbar-top d-flex align-items-center">
+            <a href="#" class="navbar-brand me-3">AIspire 💡</a>
+            <ul class="navbar-menu d-flex" id="navMenu" style="list-style: none; margin: 0; padding: 0;">
+                <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#contactModal">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#aboutUsModal">About us</a>
+                </li>                
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="container mt-4">
+        <h1 class="text-center">AI Motivational Letter Chatbox</h1>
+        
+        <div class="card p-3 mb-3 shadow">
+            <div class="card-body chat-container border p-3" id="chatbox">
+            </div>
+        </div>
+        
+        <div class="input-group">
+            <textarea id="userInput" class="form-control" placeholder="Enter your abilities..." rows="2"></textarea>
+            <button class="btn btn-primary" onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title typewriter-text" id="contactModalLabel">Contact Us 📞</h5>
+                </div>
+                <div class="modal-body">
+                    <p><strong>📧 Email:</strong> <a href="mailto:aispire_support@gmail.com">aispire_support@gmail.com</a></p>
+                    <p><strong>☎️ Phone:</strong> <a href="tel:+48713594646">+48 71 359 46 46</a></p>
+                    <p><strong>📍 Address:</strong> Fabryczna 29/31, 53-609, Wrocław, Poland</p>
+
+                <button class="btn btn-primary" id="showMoreButton" onclick="showMore()">
+                    <span id="buttonText">Show More</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                    <div class="extra-info" id="extraInfo" style="display:none;">
+                        <p><strong>💼 Office Hours:</strong> Mon-Fri, 9 AM - 6 PM</p>
+                        <p><strong>🌐 Website:</strong> <a href="https://www.aispire.com" target="_blank">www.aispire.com</a></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="aboutUsModal" tabindex="-1" aria-labelledby="aboutUsModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title typewriter-text" id="aboutUsModalLabel">About Us 👩‍💻</h5>
+                </div>
+                <div class="modal-body">
+                    <p>We are a young team which will help you to make your life a little bit easier 😊. Use us to write your motivational letter!</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function showMore() {
+    const extraInfo = document.getElementById('extraInfo');
+    const showMoreButton = document.getElementById('showMoreButton');
+    const buttonText = document.getElementById('buttonText');
+    const icon = showMoreButton.querySelector('i');
+
+    if (extraInfo.style.display === 'none' || extraInfo.style.display === '') {
+        extraInfo.style.display = 'block';
+        buttonText.textContent = 'Show Less';  
+        showMoreButton.classList.add('showing');  
+    } else {
+        extraInfo.style.display = 'none';
+        buttonText.textContent = 'Show More';  
+        showMoreButton.classList.remove('showing');  
+    }
+}
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.getElementById('userInput').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter' && !event.shiftKey) {
+                event.preventDefault();
+                sendMessage();
+            }
+        });
+
+        function sendMessage() {
+            const userInput = document.getElementById('userInput').value.trim();
+            if (userInput === '') return;
+
+            addMessage(userInput, 'user-message');
+            document.getElementById('userInput').value = '';
+
+            setTimeout(() => {
+                const aiResponse = "Here's a motivational response based on your abilities. Keep pushing forward!";
+                addMessage(aiResponse, 'ai-message'); 
+            }, 1000);
+        }
+
+        function addMessage(text, type) {
+            const chatbox = document.getElementById('chatbox');
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message', type);
+            messageDiv.textContent = text;
+
+            chatbox.appendChild(messageDiv);
+            chatbox.scrollTop = chatbox.scrollHeight;
+        }
+    </script>
+</body>
+</html>
