@@ -9,4 +9,4 @@ HTML + CSS
 ### Database 
 SQLite
 ### AI model
-GPT-4
+gemini-1.5-pro-latest
